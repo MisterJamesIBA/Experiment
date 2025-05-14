@@ -5,6 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
+    <style>
+        .good {
+            background-color: lightgreen;
+        }
+
+        .bad {
+            background-color: red;
+        }
+
+        .ok {
+            background-color: yellow;
+        }
+
+        #answerText {
+            background-color: black;
+            width: fit-content;
+        }
+
+        #answerText:hover {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,97 +36,18 @@
 
     <p id="question">Question text</p>
 
-    <input type="text" id="input">
+    <input autocomplete="off" type="text" id="input">
     <button id="enter">Enter</button>
     <button id="next">Next</button>
 
+    <p>Your answer</p>
     <p id="output">Correct / Incorrect</p>
+
+    <p>Answer</p>
+    <p id="answerText"></p>
 
     <script src="../js/voacb.js"> </script>
 
-    <script>
-
-        const INCORRECT = "INCORRECT";
-        const CORRECT = "CORRECT";
-
-        //console.log(VOCAB);
-
-        window.onload = () => {
-            // html elements
-
-            // buttons
-            let enter = document.querySelector("#enter");
-            let next = document.querySelector("#next");
-            let start = document.querySelector("#start");
-            enter.disabled = true;
-            next.disabled = true;
-
-            // inputs 
-            let input = document.querySelector("#input");
-
-            // outputs
-            let question = document.querySelector("#question");
-            let output = document.querySelector("#output");
-
-            // current answer
-            let select;
-
-            // setup question
-            const setup = () => {
-                // start
-                select = VOCAB[Math.floor(Math.random() * VOCAB.length)];
-                question.innerHTML = select.JP;
-                output.innerHTML = "";
-                input.value = "";
-            }
-
-            // start button
-            start.addEventListener("click", () => {
-                start.disabled = true;
-                enter.disabled = false;
-                setup();
-            });
-
-            // next button clicked
-            next.addEventListener("click", () => {
-                // set button and text
-                next.disabled = true;
-                enter.disabled = false;
-                setup();
-            });
-
-            // enter button submitt answer
-            enter.addEventListener("click", () => {
-                let answer = select.EN.split(" ");
-                let splitInput = input.value.split(" ");
-
-                let resultStr = "";
-
-                for (let i = 0; i < answer.length; i++) {
-                    if (i <= splitInput.length) {
-                        splitInput.push(" ");
-                    }
-
-                    if (answer[i] == splitInput[i]) {
-                        resultStr += splitInput[i] + " ";
-                    }
-                    else {
-                        resultStr += "<mark>" + splitInput[i] + "</mark> ";
-                    }
-                }
-
-                let correct = input.value == select.EN;
-                let result = (correct) ? CORRECT : INCORRECT;
-                let out = "Your answer:<br>" + resultStr + "<br>Correct answer:<br>" + answer.join(" ") + "<br>Result<br>" + result
-                output.innerHTML = out;
-
-                // if correct make next button clickable and disable enter btn
-                next.disabled = !correct;
-                enter.disabled = correct;
-            });
-        }
-
-    </script>
+    <script src="../js/test.js"></script>
 </body>
-
 </html>
