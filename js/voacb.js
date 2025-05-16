@@ -137,7 +137,7 @@ const VOCAB = [
     },
     {
         JP: "卵",
-        EN: "tamago"
+        EN: "egg"
     },
     {
         JP: "夕方。夜",

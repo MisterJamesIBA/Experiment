@@ -54,7 +54,7 @@ function arrayExtend(one, two) {
     if (one.length < two.length) {
         let len = two.length - one.length;
         for (let i = 0; i < len; i++) {
-            one.push("");
+            one.push("*");
         }
         return;
     }
@@ -112,14 +112,25 @@ window.onload = () => {
     let question = document.querySelector("#question");
     let output = document.querySelector("#output");
     let answerText = document.querySelector("#answerText");
+    let questNumber = document.querySelector("#questNumber");
 
     // current answer
     let select;
 
+    // current index start at -1 
+    let index = -1;
+
     // setup question
     const setup = () => {
+        // increment and check if out of bounds
+        index++;
+        if(index >= VOCAB.length){
+            alert("test finish");
+            return;
+        }
         // start
-        select = VOCAB[Math.floor(Math.random() * VOCAB.length)];
+        questNumber.innerHTML = `${index + 1} / ${VOCAB.length + 1}`;
+        select = VOCAB[index];
         question.innerHTML = select.JP;
         output.innerHTML = "";
         input.value = "";
