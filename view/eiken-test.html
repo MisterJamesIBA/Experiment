@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .drop-box {
+            width: fit-content;
+            min-width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .drop-text {
+            background-color: bisque;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            height: fit-content;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .question-box,
+        .answer-box {
+            width: 100%;
+            height: 100px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="muliple-choice">
+        <p>Question text</p>
+
+        <div>
+            <input type="radio" id="one" name="mc">
+            <label>question text</label>
+        </div>
+
+        <div>
+            <input type="radio" id="two" name="mc">
+            <label>question text</label>
+        </div>
+
+        <div>
+            <input type="radio" id="three" name="mc">
+            <label>question text</label>
+        </div>
+
+        <div>
+            <input type="radio" id="three" name="mc">
+            <label>question text</label>
+        </div>
+
+    </div>
+
+    <div class="drag-and-drop">
+
+        <div id="div1" draggable="true" ondragstart="dragStart(event)">
+            <p>Dragable text</p>
+        </div>
+
+        <div id="div2" draggable="true" ondragstart="dragStart(event)">
+            <p>Dragable text</p>
+        </div>
+
+        <div id="div3" draggable="true" ondragstart="dragStart(event)">
+            <p>Dragable text</p>
+        </div>
+
+        <div id="div4" draggable="true" ondragstart="dragStart(event)">
+            <p>Dragable text</p>
+        </div>
+
+        <div class="row">
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+        </div>
+
+        <div class="row">
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="drag-and-drop">
+
+        <!-- today I went to the mall to buy books -->
+
+        <div class="row">
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)">
+                <div id="div5" draggable="true" ondragstart="dragStart(event)">
+                    <p>went to</p>
+                </div>
+            </div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)">
+                <div id="div6" draggable="true" ondragstart="dragStart(event)">
+                    <p>today I</p>
+                </div>
+            </div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)">
+
+                <div id="div7" draggable="true" ondragstart="dragStart(event)">
+                    <p>to buy books</p>
+                </div>
+            </div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)">
+                <div id="div8" draggable="true" ondragstart="dragStart(event)">
+                    <p>the mall</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+            <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+        </div>
+    </div>
+
+
+    <hr>
+
+
+    <!-- Should students | be able | to chose their | school lunch menue-->
+
+    <div class="drag-and-drop">
+
+        <div class="question-box" ondrop="drop(event)" ondragover="dragOver(event)">
+            <div class="drop-text" id="div9" draggable="true" ondragstart="dragStart(event)">
+                <p>to chose their</p>
+            </div>
+             <div class="drop-text" id="div10" draggable="true" ondragstart="dragStart(event)">
+                <p>be able</p>
+            </div>
+             <div class="drop-text" id="div11" draggable="true" ondragstart="dragStart(event)">
+                <p>school lunch menue</p>
+            </div>
+             <div class="drop-text" id="div12" draggable="true" ondragstart="dragStart(event)">
+                <p>Should students</p>
+            </div>
+        </div>
+
+
+        <div class="answer-box" ondrop="drop(event)" ondragover="dragOver(event)">
+
+        </div>
+    </div>
+
+
+    <script>
+        function dragStart(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function dragOver(ev) {
+            ev.preventDefault();
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            console.log("hi", data);
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</body>
+
+</html>

@@ -98,6 +98,14 @@ start point
 window.onload = () => {
     // html elements
 
+    const hi = "Hello, world! How are you?";
+    const delimiters = /([,!?])/; // Regular expression to match delimiters (, ! ?)
+
+    // Split the string and include delimiters
+    const result = hi.split(delimiters).filter(Boolean);
+
+    console.log(result);
+
     // buttons
     let enter = document.querySelector("#enter");
     let next = document.querySelector("#next");
@@ -120,17 +128,20 @@ window.onload = () => {
     // current index start at -1 
     let index = -1;
 
+    //shuffle the vocab words
+    let shuffle = VOCAB.sort(() => Math.random() - 0.5);
+
     // setup question
     const setup = () => {
         // increment and check if out of bounds
         index++;
-        if(index >= VOCAB.length){
+        if (index >= VOCAB.length) {
             alert("test finish");
             return;
         }
         // start
         questNumber.innerHTML = `${index + 1} / ${VOCAB.length + 1}`;
-        select = VOCAB[index];
+        select = shuffle[index];
         question.innerHTML = select.JP;
         output.innerHTML = "";
         input.value = "";
@@ -159,7 +170,6 @@ window.onload = () => {
 
         // check the users answer
         let resultList = checkAnswer(userInput, answer);
-        console.log(resultList);
 
         let correct = input.value == select.EN;
         let result = (correct) ? CORRECT : INCORRECT;

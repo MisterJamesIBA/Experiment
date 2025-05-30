@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .drop-box {
+            width: fit-content;
+            min-width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .drag-box {
+            background-color: bisque;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            height: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>It's sunny today there aren't any </h2> 
+        
+        <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+        
+        <h2>in the sky.</h2>
+
+
+        <div class="drop-box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+
+        <div class="drag-box" id="div1" draggable="true" ondragstart="dragStart(event)">
+            <p>shells</p>
+        </div>
+
+        <div class="drasg-box" id="div1" draggable="true" ondragstart="dragStart(event)">
+            <p>clouds</p>
+        </div>
+
+        <div class="drag-box" id="div1" draggable="true" ondragstart="dragStart(event)">
+            <p>stones</p>
+        </div>
+
+        <div class="drag-box" id="div1" draggable="true" ondragstart="dragStart(event)">
+            <p>roads</p>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+        function dragStart(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function dragOver(ev) {
+            ev.preventDefault();
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            console.log("hi", data);
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</body>
+
+</html>
