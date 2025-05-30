@@ -65,7 +65,7 @@
             let play = document.querySelector("#play");
 
             const update = () => {
-                console.log(userInput.value);
+                //console.log(userInput.value);
                 let list = userInput.value.split(" ");
                 let newList = Array.from(list, (value) => `<span onclick="say('${value}')" class='hover'>${value}</span>`)
                 output.innerHTML = newList.join(" ");
@@ -75,12 +75,13 @@
 
             userInput.addEventListener("focus", update);
 
+            userInput.addEventListener("input", update);
+
             play.addEventListener("click", () => {
 
                 if(userInput.value == null || userInput.value == "" || userInput.length == 0){
                     return alert("no text");
                 }
-
 
                 let synth = window.speechSynthesis;
 
@@ -90,23 +91,20 @@
                 // split on . and ? and !
                 let list = dialog.split(delimeter).filter(Boolean);
 
-                console.log(list);
-
                 let newList = [];
                 for(let i = 0; i < list.length; i+=2){
-                    newList.push(list[i] + list[i+1]);
+
+                    let mark = (i + 1 >= list.length) ? "" :list[i+1];
+                    newList.push(list[i] + mark);
                 }
 
                 list = newList;
-
-                console.log(newList);
 
                 let index = 0, word = 0;
 
                 let last = 0;
 
                 const speek = () => {
-
                     let line = list[index];
                     let lineList = line.split(" ");
 
@@ -139,6 +137,7 @@
                     }
 
                     utterThis.onend = (event) => {
+                        console.log(word);
                         index++;
                         if (index >= list.length) {
                             return output.innerHTML = userInput.value;
@@ -157,4 +156,8 @@
 
 </html>
 
-<!-- read highlited text -->
+<!-- read highlited text
+    boundary
+    update
+
+-->
