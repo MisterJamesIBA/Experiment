@@ -43,7 +43,6 @@
 
     <h2>Output</h2>
     <p id="output"></p>
-    <button id="ex">Example</button>
     <button id="play">Play</button>
 
     <script>
@@ -58,23 +57,12 @@
             synth.speak(utterThis);
         }
 
-
-        // for debuging the progarm
-        const example = "This is a sentance. This is a question, but what about this? This is exciting? What is this!";
-
         window.onload = function () {
             let userInput = document.querySelector("#userInput");
 
             let output = document.querySelector("#output");
 
             let play = document.querySelector("#play");
-
-            let ex = document.querySelector("#ex");
-
-            ex.addEventListener("click", () => {
-                userInput.innerHTML = example;
-                output.innerHTML = example;
-            });
 
             const update = () => {
                 console.log(userInput.value);
@@ -88,6 +76,12 @@
             userInput.addEventListener("focus", update);
 
             play.addEventListener("click", () => {
+
+                if(userInput.value == null || userInput.value == "" || userInput.length == 0){
+                    return alert("no text");
+                }
+
+
                 let synth = window.speechSynthesis;
 
                 let dialog = userInput.value;
@@ -96,7 +90,16 @@
                 // split on . and ? and !
                 let list = dialog.split(delimeter).filter(Boolean);
 
-                //console.log(list);
+                console.log(list);
+
+                let newList = [];
+                for(let i = 0; i < list.length; i+=2){
+                    newList.push(list[i] + list[i+1]);
+                }
+
+                list = newList;
+
+                console.log(newList);
 
                 let index = 0, word = 0;
 
@@ -129,8 +132,6 @@
                             }
                             return value;
                         }).join("");
-
-                        console.log(event);
 
                         output.innerHTML = text;
 
