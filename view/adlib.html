@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <label for="">Name</label>
+        <input id="name">
+    </div>
+
+    <div>
+        <label for="">Adjective One: </label>
+        <input id="adj1">
+    </div>
+
+    <div>
+        <label for="">Adjective Two: </label>
+        <input id="adj2">
+    </div>
+
+    <div>
+        <label for="">Adjective Three: </label>
+        <input id="adj3">
+    </div>
+
+    <div>
+        <label for="">Animal: </label>
+        <input id="animal">
+    </div>
+
+    <div>
+        <label for="">Object: </label>
+        <input id="object">
+    </div>
+
+    <div>
+        <label for="">Number: </label>
+        <input id="number">
+    </div>
+
+    <div>
+        <label for="">Color: </label>
+        <input id="color">
+    </div>
+
+    <div>
+        <label for="">Place: </label>
+        <input id="place">
+    </div>
+
+    <div>
+        <label for="">Creature: </label>
+        <input id="creature">
+    </div>
+
+    <div>
+        <label for="">Food: </label>
+        <input id="food">
+    </div>
+
+    <div>
+        <label for="">Adverb: </label>
+        <input id="adverb">
+    </div>
+
+        <div>
+        <label for="">Verb ending in -ing: </label>
+        <input id="verbIng">
+    </div>
+
+        <div>
+        <label for="">Exclamation: </label>
+        <input id="exclamation">
+    </div>
+
+        <div>
+        <label for="">Plural noun: </label>
+        <input id="pluralNoun">
+    </div>
+
+
+    <button onclick="writeStory()">Write</button>
+
+    <p id="out"></p>
+
+
+    <script>
+
+
+        function writeStory() {
+            let name = document.querySelector("#name").value;
+            let adjOne = document.querySelector("#adj1").value;
+            let adjTwo = document.querySelector("#adj2").value;
+            let adjThree = document.querySelector("#adj3").value;
+            let adverb = document.querySelector("#adverb").value;
+
+            let verbIng = document.querySelector("#verbIng").value;
+
+            let exclamation = document.querySelector("#exclamation").value;
+
+            let pluralNoun = document.querySelector("#pluralNoun").value;
+
+            let animal = document.querySelector("#animal").value;
+            let object = document.querySelector("#object").value;
+            let number = document.querySelector("#number").value;
+            let color = document.querySelector("#color").value;
+            let place = document.querySelector("#place").value;
+            let creature = document.querySelector("#creature").value;
+            let food = document.querySelector("#food").value;
+
+
+            const story = `The Great Adventure of ${name} <br>One sunny ${adjTwo} morning, ${name}, the ${adjOne} ${animal}, decided it was time to embark on a ${adjTwo} adventure. Packing their trusty ${object} and a bag full of ${pluralNoun}, they set off toward the ${place}. As they walked, they encountered a ${adjThree} ${creature} who was ${verbIng} near a ${object}. "${exclamation}!" said ${name}, "What are you doing here?" <br>The ${creature} replied, "I'm on a quest to find the legendary ${adjOne} ${object}. Would you like to join me?" <br> Without hesitation, ${name} agreed, and together they ventured into the ${adjTwo} forest. Along the way, they had to cross a ${adjOne} river filled with ${pluralNoun} and climb a ${adjTwo} mountain that smelled like ${food}.<br> Finally, after ${number} hours of searching, they found the ${adjOne} ${object} hidden inside a ${place}. It was glowing with ${color} light! "${exclamation}!" they both shouted in excitement. <br> From that day on, ${name} and the ${creature} became the best of friends, sharing their ${adjThree} story with everyone they met. And they lived ${adverb} ever after.`;
+
+            let out = document.querySelector("#out"); 
+
+            out.innerHTML = story;
+        }
+
+
+    </script>
+</body>
+
+</html>
+
+<!--
+
+The Great Adventure of [Name]
+One sunny [adjective] morning, [Name], the [adjective] [animal], decided it was time to embark on a [adjective] adventure. Packing their trusty [object] and a bag full of [plural noun], they set off toward the [place].
+
+As they walked, they encountered a [adjective] [creature] who was [verb ending in -ing] near a [object]. "[Exclamation]!" said [Name], "What are you doing here?"
+
+The [creature] replied, "I'm on a quest to find the legendary [adjective] [object]. Would you like to join me?"
+
+Without hesitation, [Name] agreed, and together they ventured into the [adjective] forest. Along the way, they had to cross a [adjective] river filled with [plural noun] and climb a [adjective] mountain that smelled like [food].
+
+Finally, after [number] hours of searching, they found the [adjective] [object] hidden inside a [place]. It was glowing with [color] light! "[Exclamation]!" they both shouted in excitement.
+
+From that day on, [Name] and the [creature] became the best of friends, sharing their [adjective] story with everyone they met. And they lived [adverb] ever after.
+
+Feel free to fill in the blanks and let your imagination run wild!
+
+-->
