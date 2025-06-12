@@ -2,3 +2,22 @@
     width: 100%;
     height: 300px;
 }
+
+.input-box {
+    padding: 10px;
+}
+
+.input-box label {
+    padding: 10px;
+}
+
+.input-box input {
+     padding: 10px;
+}
+
+* {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 1rem;
+  color: #000000;
+  animation: wave 2s infinite;
+}
