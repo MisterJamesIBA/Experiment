@@ -1,0 +1,26 @@
+textarea {
+    height: 200px;
+    width: 100%;
+}
+
+.hover:hover {
+    background-color: rgb(192, 190, 188);
+    cursor: pointer;
+}
+
+p {
+    font-size: large;
+}
+
+.body {
+    font-style: normal;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.sentance {
+    background-color: rgb(236, 177, 104);
+}
+
+.word {
+    color: rgb(255, 255, 255);
+}

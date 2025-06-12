@@ -69,20 +69,26 @@
         <input id="adverb">
     </div>
 
-        <div>
+    <div>
         <label for="">Verb ending in -ing: </label>
         <input id="verbIng">
     </div>
 
-        <div>
+    <div>
         <label for="">Exclamation: </label>
         <input id="exclamation">
     </div>
 
-        <div>
+    <div>
         <label for="">Plural noun: </label>
         <input id="pluralNoun">
     </div>
+
+        <div>
+        <label for="">Villian: </label>
+        <input id="villian">
+    </div>
+
 
 
     <button onclick="writeStory()">Write</button>
@@ -114,12 +120,17 @@
             let creature = document.querySelector("#creature").value;
             let food = document.querySelector("#food").value;
 
+            let villian = document.querySelector("#villian").value;
+            let sillyNoun = document.querySelector("#sillynoun");
+
 
             const story = `The Great Adventure of ${name} <br>One sunny ${adjTwo} morning, ${name}, the ${adjOne} ${animal}, decided it was time to embark on a ${adjTwo} adventure. Packing their trusty ${object} and a bag full of ${pluralNoun}, they set off toward the ${place}. As they walked, they encountered a ${adjThree} ${creature} who was ${verbIng} near a ${object}. "${exclamation}!" said ${name}, "What are you doing here?" <br>The ${creature} replied, "I'm on a quest to find the legendary ${adjOne} ${object}. Would you like to join me?" <br> Without hesitation, ${name} agreed, and together they ventured into the ${adjTwo} forest. Along the way, they had to cross a ${adjOne} river filled with ${pluralNoun} and climb a ${adjTwo} mountain that smelled like ${food}.<br> Finally, after ${number} hours of searching, they found the ${adjOne} ${object} hidden inside a ${place}. It was glowing with ${color} light! "${exclamation}!" they both shouted in excitement. <br> From that day on, ${name} and the ${creature} became the best of friends, sharing their ${adjThree} story with everyone they met. And they lived ${adverb} ever after.`;
 
-            let out = document.querySelector("#out"); 
+            const story2 = `The Great ${adjOne} Adventure <br>One day, ${name} woke up feeling (Emotion). They decided it was time for an adventure. Packing their (Noun), they set off towards the mysterious ${place}.<br>Along the way, they met a ${adjTwo} ${animal} who offered them a ${object}. "Take this," the creature said, "you'll need it to defeat the ${adjTwo} ${villian}."<br>Just as ${name} was about to enter the ${place}, the ground shook, and ${villian} appeared, laughing ${adverb}. "You'll never make it past me!"<br>But ${name} had a plan. Using their ${object}, they ${verbIng} right into the heart of the ${place}, facing their destiny head-on...<br>As ${name} stepped into the heart of the ${place}, gripping their ${object} tightly, the air crackled with tension. The ${adjThree} ${villian} towered above them, eyes glowing with menace.<br>"You think that puny ${object} can stop me?" ${villian} sneered, stepping forward.<br>But ${name} had a trick up their sleeve. They remembered the advice of the ${adjThree} ${animal} from earlier and held up the ${object}, chanting a mysterious phrase they had just made up.<br>Suddenly, the ${place}trembled, and the walls shimmered. A secret passage appeared behind ${villian}, leading to a hidden chamber filled with ${pluralNoun}.<br>"${villian}, your reign of terror ends now!" ${name} declared, leaping through the passage and triggering the chamber’s ancient magic.<br>Bright light enveloped the room as ${villian} howled in defeat. When the glow faded, the menace was gone, replaced by a harmless ${sillyNoun}, shivering in confusion.<br>${name} had done it! The ${place} was safe, and they would forever be known as the hero who outsmarted the ${villian}.<br>As they stepped out into the sunset, the ${villian} ${animal} appeared once more, nodding approvingly. "You did well," it said. "But beware—the world is full of even stranger adventures..."<br>And just like that, ${name} knew their journey was far from over.<br>As ${name} stepped out of the hidden chamber, the world outside had changed. The skies were clearer, the ${place} no longer shrouded in darkness. The once-menacing ${villian}, now a harmless ${sillyNoun}, waddled off into the distance, mumbling about a new life as a (Odd Profession).<br>${name} took a deep breath, feeling the weight of their adventure settle into their bones. They had faced danger, outwitted evil, and discovered the true magic within themselves. But as the ${villian} ${animal} had warned, the world was full of even stranger adventures.<br>With a grin, ${name} picked up their trusty ${object} and started walking toward the horizon, ready for whatever came next.<br>Little did they know, just beyond the hills, another mystery awaited…`;
 
-            out.innerHTML = story;
+            let out = document.querySelector("#out");
+
+            out.innerHTML = story2;
         }
 
 
@@ -144,5 +155,47 @@ Finally, after [number] hours of searching, they found the [adjective] [object] 
 From that day on, [Name] and the [creature] became the best of friends, sharing their [adjective] story with everyone they met. And they lived [adverb] ever after.
 
 Feel free to fill in the blanks and let your imagination run wild!
+
+================================================================================
+
+The Great (Adjective) Adventure
+
+One day, (Name) woke up feeling (Emotion). They decided it was time for an adventure. Packing their (Noun), they set off towards the mysterious (Place).
+
+Along the way, they met a (Adjective) (Animal) who offered them a (Object). "Take this," the creature said, "you'll need it to defeat the (Adjective) (Villain)."
+
+Just as (Name) was about to enter the (Place), the ground shook, and (Villain) appeared, laughing (Adverb). "You'll never make it past me!"
+
+But (Name) had a plan. Using their (Object), they (Action Verb) right into the heart of the (Place), facing their destiny head-on...
+
+Fill in the blanks, and let's see what hilarious or epic story you create! If you want me to write one for you, just give me a few words to work with and I’ll craft something fun!
+
+As (Name) stepped into the heart of the (Place), gripping their (Object) tightly, the air crackled with tension. The (Adjective) (Villain) towered above them, eyes glowing with menace.
+
+"You think that puny (Object) can stop me?" (Villain) sneered, stepping forward.
+
+But (Name) had a trick up their sleeve. They remembered the advice of the (Adjective) (Animal) from earlier and held up the (Object), chanting a mysterious phrase they had just made up.
+
+Suddenly, the (Place) trembled, and the walls shimmered. A secret passage appeared behind (Villain), leading to a hidden chamber filled with (Plural Noun).
+
+"(Villain), your reign of terror ends now!" (Name) declared, leaping through the passage and triggering the chamber’s ancient magic.
+
+Bright light enveloped the room as (Villain) howled in defeat. When the glow faded, the menace was gone, replaced by a harmless (Silly Noun), shivering in confusion.
+
+(Name) had done it! The (Place) was safe, and they would forever be known as the hero who outsmarted the (Villain).
+
+As they stepped out into the sunset, the (Adjective) (Animal) appeared once more, nodding approvingly. "You did well," it said. "But beware—the world is full of even stranger adventures..."
+
+And just like that, (Name) knew their journey was far from over.
+
+As (Name) stepped out of the hidden chamber, the world outside had changed. The skies were clearer, the (Place) no longer shrouded in darkness. The once-menacing (Villain), now a harmless (Silly Noun), waddled off into the distance, mumbling about a new life as a (Odd Profession).
+
+(Name) took a deep breath, feeling the weight of their adventure settle into their bones. They had faced danger, outwitted evil, and discovered the true magic within themselves. But as the (Adjective) (Animal) had warned, the world was full of even stranger adventures.
+
+With a grin, (Name) picked up their trusty (Object) and started walking toward the horizon, ready for whatever came next.
+
+Little did they know, just beyond the hills, another mystery awaited…
+
+And thus, the legend of (Name) lived on! Want to give them a surprise epilogue or a twist ending? Let's make it even wilder!
 
 -->

@@ -6,35 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reader</title>
 
-    <style>
-        .body {
-            font-style: normal;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-
-        .sentance {
-            background-color: bisque;
-        }
-
-        .word {
-            color: red;
-        }
-
-        textarea {
-            height: 200px;
-            width: 100%;
-        }
-
-
-        .hover:hover {
-            background-color: bisque;
-            cursor: pointer;
-        }
-
-        p {
-            font-size: large;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/reader.css">
 </head>
 
 <body>
@@ -43,115 +15,15 @@
 
     <h2>Output</h2>
     <p id="output"></p>
+
+    <div>
+        <label for="">Speed</label>
+        <input id="speed" value="1" type="range" min="0.1" max="2" step="0.1">
+        <span id="out"></span>
+    </div>
     <button id="play">Play</button>
 
-    <script>
-        const SENTANCE = "<span class='sentance'>";
-        const WORD = "<span class='word'>";
-        const END = "</span>";
-
-
-        function say(line) {
-            let synth = window.speechSynthesis;
-            var utterThis = new SpeechSynthesisUtterance(line);
-            synth.speak(utterThis);
-        }
-
-        window.onload = function () {
-            let userInput = document.querySelector("#userInput");
-
-            let output = document.querySelector("#output");
-
-            let play = document.querySelector("#play");
-
-            const update = () => {
-                //console.log(userInput.value);
-                let list = userInput.value.split(" ");
-                let newList = Array.from(list, (value) => `<span onclick="say('${value}')" class='hover'>${value}</span>`)
-                output.innerHTML = newList.join(" ");
-            }
-
-            userInput.addEventListener("change", update);
-
-            userInput.addEventListener("focus", update);
-
-            userInput.addEventListener("input", update);
-
-            play.addEventListener("click", () => {
-
-                if(userInput.value == null || userInput.value == "" || userInput.length == 0){
-                    return alert("no text");
-                }
-
-                let synth = window.speechSynthesis;
-
-                let dialog = userInput.value;
-                const delimeter = /([,!?'.])/;
-
-                // split on . and ? and !
-                let list = dialog.split(delimeter).filter(Boolean);
-
-                let newList = [];
-                for(let i = 0; i < list.length; i+=2){
-
-                    let mark = (i + 1 >= list.length) ? "" :list[i+1];
-                    newList.push(list[i] + mark);
-                }
-
-                list = newList;
-
-                let index = 0, word = 0;
-
-                let last = 0;
-
-                const speek = () => {
-                    let line = list[index];
-                    let lineList = line.split(" ");
-
-                    word = 0;
-
-                    var utterThis = new SpeechSynthesisUtterance(line);
-
-                    utterThis.onboundary = (event) => {
-                        let text = Array.from(list, (value, i) => {
-                            if (i == index) {
-                                let s = Array.from(lineList, (v, j) => {
-                                    if (j == word) {
-                                        return `${WORD}${v}${END}`;
-                                    }
-                                    return v;
-                                }).join(" ");
-
-                                let arr = line.split('');
-                                arr.splice(last, WORD,)
-
-
-                                return `${SENTANCE}${s}${END}`;
-                            }
-                            return value;
-                        }).join("");
-
-                        output.innerHTML = text;
-
-                        word++;
-                    }
-
-                    utterThis.onend = (event) => {
-                        console.log(word);
-                        index++;
-                        if (index >= list.length) {
-                            return output.innerHTML = userInput.value;
-                        }
-                        speek();
-                    }
-
-                    synth.speak(utterThis);
-                }
-
-                speek();
-            });
-        }
-    </script>
+    <script src="../js/reader.js"></script>
 </body>
 
 </html>
