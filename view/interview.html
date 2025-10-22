@@ -29,6 +29,10 @@
 
     <script>
 
+        const spin = new Audio('../sound/ding.mp3');
+        const ding = new Audio('../sound/spin.mp3');
+
+
         const QUEST = [
         "What kind of music do you like?",
         "Where would you like to travel?",
@@ -65,8 +69,28 @@
 
         const TEXT = document.querySelector("#textBox");
 
+        let busy = false;
+
         window.addEventListener("click", ()=>{
-            TEXT.innerHTML = QUEST[Math.floor(Math.random() * QUEST.length)];
+            if(busy){
+                return;
+            }
+
+            busy = true;
+            ding.play();
+            let count = 0;
+            let max = 34;
+            
+
+            let handle = setInterval(()=>{
+                TEXT.innerHTML = QUEST[Math.floor(Math.random() * QUEST.length)];
+                count++;
+                if(count>max){
+                    clearInterval(handle);
+                    spin.play();
+                    busy = false;
+                }
+            }, 100)
         })
 
 
