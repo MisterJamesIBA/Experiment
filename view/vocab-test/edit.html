@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+
+    <link rel="stylesheet" href="../../css/vocab-test.css">
+</head>
+
+<body>
+    <div class="flex-box">
+
+        <div class="select">
+            <div id="testList" class="list">
+            </div>
+
+            <button id="addbtn" class="select-btn">Add</button>
+            <button id="copyBtn" class="select-btn">Copy</button>
+            <button id="deleteBtn" class="select-btn">Delete</button>
+
+        </div>
+
+
+        <div id="edit" class="edit hide">
+
+            <h3>Name: </h3>
+            <input type="text">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Japanese
+                        </th>
+                        <th>
+                            English
+                        </th>
+                        <th>
+                            Delete
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tableBdy">
+                </tbody>
+            </table>
+
+            <button id="addRow">add row</button>
+            <button id="addRow">delete</button>
+
+        </div>
+
+
+    </div>
+
+    <script src="../../js/vocab-test.js"></script>
+</body>
+
+</html>

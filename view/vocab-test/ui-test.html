@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .flex-box {
+            background-color: aqua;
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .select,
+        .edit {
+            margin: 3%;
+        }
+
+        .select {
+            background-color: red;
+            flex: 0 0 20%;
+            margin-right: 2%;
+        }
+
+        .edit {
+            background-color: blue;
+            flex: 0 0 70%;
+        }
+
+        .list {
+            overflow: scroll;
+            height: 85%;
+        }
+
+        .select-btn {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-box">
+
+        <div class="select">
+            <div class="list">
+                <button class="select-btn">name here</button>
+                <button class="select-btn">name here</button>
+                <button class="select-btn">name here</button>
+                <button class="select-btn">name here</button>
+                <button class="select-btn">name here</button>
+            </div>
+
+            <button class="select-btn">Add</button>
+            <button class="select-btn">Copy</button>
+            <button class="select-btn">Delete</button>
+            
+        </div>
+
+
+        <div class="edit">
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            Japanese
+                        </th>
+                        <th>
+                            English
+                        </th>
+                        <th>
+                            Delete
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>りんご</td>
+                        <td>apple</td>
+                        <td><button>Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button>add row</button>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

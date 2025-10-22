@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <input type="text">
+    <button>Enter</button>
+
+    <script>
+
+        /*
+            {
+                type: TYPE.DIALOG,
+                dialog: ""
+            },
+            {
+                type: TYPE.DECISION,
+                options: [],
+                jump: []
+            },
+            {
+                type: TYPE.END,
+            }
+
+
+        :*/
+
+
+        const TYPE = { DIALOG: 0, DECISION: 1, END: 2 }
+
+        const STORY = [
+            {
+                type: TYPE.DIALOG,
+                dialog: "You are at the entrance of the layer of the evil wizard. There is a great treasure somewhere inside here. But also a dragon."
+            },
+            {
+                type: TYPE.DIALOG,
+                dialog: "The gates are locked shut. What will you do?"
+            },
+            {
+                type: TYPE.DECISION,
+                options: ["Climb over the gate", "Force the gate open."],
+                jump: [0, 2]
+            },
+            {
+                type: TYPE.DIALOG,
+                dialog: "You attempt to push the gate, but it does not move. Then you try to kick the gate open, but it does not budge. Your foot hurts very badly now. Go back and try again. "
+            },
+            {
+                type: TYPE.DIALOG,
+                dialog: "You attempt to climb over the gate. You grip the bars and pull yourself over without much trouble. You land on the other side and walk into the front entrance of the liar."
+            },
+        ]
+
+
+
+        window.onload = function () {
+            let p = document.querySelector("p");
+
+            let index = 0;
+
+            const readLine = () => {
+                let curr = STORY[index];
+
+                switch (curr.type) {
+                    case TYPE.DECISION:
+                        break;
+                    case TYPE.DIALOG:
+                        p.innerHTML += curr.dialog;
+                        break;
+                    case TYPE.END:
+                        break;
+                }
+            }
+
+            readLine();
+        }
+
+    </script>
+</body>
+
+</html>
