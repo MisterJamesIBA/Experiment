@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #nameContainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100%;
+        }
+
+        .health-box {
+            width: 40vh;
+            height: 20vh;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1>Health Tracker</h1>
+
+
+
+    <textarea name="nameInput" id="nameInput"></textarea>
+    <button onclick="addNames()">Enter</button>
+
+    <div id="nameContainer"></div>
+    <script>
+
+        const correct = new Audio('../sound/correct.mp3');
+        const wrong = new Audio('../sound/wrong.mp3');
+
+        function addNames(){
+            let nameContainer = document.querySelector("#nameContainer");
+            let nameText = "james chris sandra";//document.querySelector("#nameInput").value;
+            
+            if(nameText == null || nameText == ""){
+                return;
+            }
+
+            nameContainer.innerHTML = "";
+            
+            let nameList = nameText.split(" ");
+            nameList.forEach(name => {
+                let health = 5;
+                let div = document.createElement("div");
+                div.className = "health-box";
+                let nameText = document.createElement("p");
+                nameText.innerHTML = name;
+                let healthText = document.createElement("p");
+                healthText.innerHTML = health;
+                let addBtn = document.createElement("button");
+                addBtn.innerHTML = "+";
+                let subBtn = document.createElement("button");
+                subBtn.innerHTML = "-";
+
+                // add to page
+                div.appendChild(nameText);
+                div.appendChild(healthText);
+                div.appendChild(addBtn);
+                div.appendChild(subBtn);
+                nameContainer.appendChild(div);
+
+                // add eventlisteners
+                addBtn.addEventListener("click", ()=>{
+                    health += 1;
+                    healthText.innerHTML = health;
+                    correct.cancel();
+                    correct.play();
+                });
+
+                subBtn.addEventListener("click", ()=>{
+                    health -= 1;
+                    healthText.innerHTML = health;
+                    wrong.cancel()
+                    wrong.play();
+                });
+            });
+        }
+    </script>
+</body>
+</html>
