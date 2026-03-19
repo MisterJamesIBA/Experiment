@@ -6,87 +6,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        textarea {
+            width: 50%;
+        }
 
         #nameContainer {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            width: 100%;
+            width: 80%;
             height: 100%;
+            margin: auto;
         }
 
         .health-box {
-            width: 40vh;
-            height: 20vh;
+            width: 25%;
+            height: 20%;
             border: 1px solid black;
+            border-radius: 10px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .health-box p {
+            height: 20%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .health-box div{
+            height: 30%;
+        }
+
+        .info-box {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .info-box button {
+            width: 50%;
             border-radius: 10px;
         }
 
-
-
+        * {
+            font-size: 20px;
+        }
     </style>
 </head>
+
 <body>
     <h1>Health Tracker</h1>
-
-
 
     <textarea name="nameInput" id="nameInput"></textarea>
     <button onclick="addNames()">Enter</button>
 
     <div id="nameContainer"></div>
+
     <script>
 
-        const correct = new Audio('../sound/correct.mp3');
+        const correct = new Audio('../sound/ding.mp3');
         const wrong = new Audio('../sound/wrong.mp3');
+        const HEART = "&#10084;&#65039;";
 
-        function addNames(){
+        function getHeart(numb) {
+
+            if (numb <= 0) {
+                return "&#128148;";
+            }
+
+            let s = "";
+
+            for (let i = 0; i < numb; i++) {
+                s += HEART;
+            }
+
+            return s;
+        }
+
+        function addNames() {
             let nameContainer = document.querySelector("#nameContainer");
-            let nameText = "james chris sandra";//document.querySelector("#nameInput").value;
-            
-            if(nameText == null || nameText == ""){
+            let nameText = document.querySelector("#nameInput").value;
+
+            if (nameText == null || nameText == "") {
                 return;
             }
 
             nameContainer.innerHTML = "";
-            
+
             let nameList = nameText.split(" ");
             nameList.forEach(name => {
                 let health = 5;
                 let div = document.createElement("div");
                 div.className = "health-box";
+                // name
                 let nameText = document.createElement("p");
                 nameText.innerHTML = name;
+
+                // health box
+                let infoBox = document.createElement("div");
+                infoBox.className = "info-box";
+
+                // health
                 let healthText = document.createElement("p");
-                healthText.innerHTML = health;
+                healthText.innerHTML = getHeart(health);
+
+
+                // buttons
                 let addBtn = document.createElement("button");
                 addBtn.innerHTML = "+";
                 let subBtn = document.createElement("button");
                 subBtn.innerHTML = "-";
 
+                // to info box
+                infoBox.appendChild(addBtn);
+                infoBox.appendChild(subBtn);
+
                 // add to page
                 div.appendChild(nameText);
                 div.appendChild(healthText);
-                div.appendChild(addBtn);
-                div.appendChild(subBtn);
+                div.appendChild(infoBox);
+
                 nameContainer.appendChild(div);
 
                 // add eventlisteners
-                addBtn.addEventListener("click", ()=>{
+                addBtn.addEventListener("click", () => {
                     health += 1;
-                    healthText.innerHTML = health;
-                    correct.cancel();
+                    healthText.innerHTML = getHeart(health);
+                    correct.currentTime = 0;
                     correct.play();
                 });
 
-                subBtn.addEventListener("click", ()=>{
+                subBtn.addEventListener("click", () => {
                     health -= 1;
-                    healthText.innerHTML = health;
-                    wrong.cancel()
+                    healthText.innerHTML = getHeart(health);
+                    wrong.currentTime = 0;
                     wrong.play();
                 });
             });
         }
     </script>
 </body>
+
 </html>
