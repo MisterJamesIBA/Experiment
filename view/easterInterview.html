@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easter Inverview</title>
+
+    <style>
+        .base {
+            display: flex;
+            /* フレックスボックスを有効化 */
+            justify-content: center;
+            /* 水平方向の中央揃え */
+            align-items: center;
+            /* 垂直方向の中央揃え */
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="base">
+        <div class="center">
+            <h1 id="textBox">Tap the sreeen for a question.</h1>
+        </div>
+    </div>
+
+
+    <script>
+
+        const spin = new Audio('../sound/ding.mp3');
+        const ding = new Audio('../sound/spin.mp3');
+
+
+        const QUEST = [
+            "Do you think using smartphones at school is a good idea?",
+            "Do you think students should wear school uniforms?",
+            "Do you think people should use bicycles more than cars?",
+            "Do you think we should have more holidays?",
+            "Do you think it is important to recycle?",
+            "Do you think students should do volunteer work?",
+            "Do you think having pets is good for children?",
+            "Do you think it is better to live in a city than in the countryside?",
+            "Do you think watching TV is a good way to learn?",
+            "Do you think children should help with housework?",
+            "Do you think using the Internet every day is good?",
+            "Do you think video games are good for children?",
+            "Do you think social media is useful?",
+            "Do you think robots will be important in the future?",
+            "Do you think people should read books instead of watching videos?",
+            "Do you think AI will help students in the future?",
+            "Do you think students should use tablets in class?",
+            "Do you think we use too many electronic devices?",
+            "Do you think listening to music while studying is a good idea?",
+            "Do you think smartphones are too expensive?",
+            "Do you think we should plant more trees in cities?",
+            "Do you think people should use less plastic?",
+            "Do you think schools should teach more about the environment?",
+            "Do you think zoos are good for animals?",
+            "Do you think it’s important to save water?",
+            "Do you think people should clean up parks more often?",
+            "Do you think global warming is a big problem?",
+            "Do you think we should protect wild animals?",
+            "Do you think people should use public transportation more?",
+            "Do you think nature is important for people’s health?",
+            "Do you think school lunch is important?",
+            "Do you think students should have more free time?",
+            "Do you think studying English is important?",
+            "Do you think schools should have more school events?",
+            "Do you think students should study during summer vacation?",
+            "Do you think school rules are too strict?",
+            "Do you think it is important to learn a second foreign language?",
+            "Do you think students should choose their own subjects?",
+            "Do you think students should bring their own lunch?",
+            "Do you think studying with friends is better than studying alone?",
+            "Do you often go shopping with your family?",
+            "Do you usually help your parents at home?",
+            "Do you like cooking?",
+            "Do you often go to the park on weekends?",
+            "Do you usually eat breakfast at home?",
+            "Do you have a part-time job?",
+            "Do you prefer spending time indoors or outdoors?",
+            "Do you use a bicycle to go to school?",
+            "Do you play sports?",
+            "Do you enjoy watching movies with your family?",
+            "Do you enjoy studying English at school?",
+            "Do you often use a computer at school?",
+            "Do you think English is important for your future?",
+            "Do you want to study abroad in the future?",
+            "Do you prefer group study or studying alone?",
+            "Do you often do homework?",
+            "Do you play school events like sports day?",
+            "Do you usually talk with friends during lunch break?",
+            "Do you like to go dancing?",
+            "Do you play musical instruments?",
+            "Do you like painting pictures?",
+            "Do you prefer reading books in your free time?",
+            "Do you play video games?",
+            "Do you like listening to music?",
+            "Do you prefer to study in the morning or at night?",
+            "Do you enjoy traveling to new places?",
+            "Do you prefer watching TV or reading books?",
+            "Do you watch YouTube every day?",
+            "Do you want to be a teacher in the future?",
+            "Do you want to be a scientist in the future?",
+            "Do you want to be a doctor in the future?",
+            "Do you want to be a singer in the future?",
+            "Do you want to be a soccer player in the future?",
+            "Do you want to be a nurse in the future?",
+            "Do you want to be a farmer or business person in the future?",
+            "Do you want to be a volunteer worker?",
+            "Do you want to live in a big city in the future?",
+            "Do you want to live in the countryside in the future?",
+            "Do you want to study overseas?",
+            "Do you want to have a pet when you grow up?"
+        ]
+
+
+
+        const TEXT = document.querySelector("#textBox");
+
+        let busy = false;
+
+        window.addEventListener("click", () => {
+            if (busy) {
+                return;
+            }
+
+            busy = true;
+            ding.play();
+            let count = 0;
+            let max = 34;
+
+
+            let handle = setInterval(() => {
+                TEXT.innerHTML = QUEST[Math.floor(Math.random() * QUEST.length)];
+                count++;
+                if (count > max) {
+                    clearInterval(handle);
+                    spin.play();
+                    busy = false;
+                }
+            }, 100)
+        })
+
+
+    </script>
+</body>
+
+</html>
