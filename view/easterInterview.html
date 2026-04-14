@@ -120,6 +120,8 @@
 
         const TEXT = document.querySelector("#textBox");
 
+        let copy = JSON.parse(JSON.stringify(QUEST)).sort(()=>Math.random() - 0.5);
+
         let busy = false;
 
         window.addEventListener("click", () => {
@@ -132,12 +134,19 @@
             let count = 0;
             let max = 34;
 
+            let pick = copy.splice(0, 1);
+
+            if(copy.length <= 0){
+                copy = JSON.parse(JSON.stringify(QUEST)).sort(()=>Math.random() - 0.5);
+            }
+
 
             let handle = setInterval(() => {
                 TEXT.innerHTML = QUEST[Math.floor(Math.random() * QUEST.length)];
                 count++;
                 if (count > max) {
                     clearInterval(handle);
+                    TEXT.innerHTML = pick;
                     spin.play();
                     busy = false;
                 }
