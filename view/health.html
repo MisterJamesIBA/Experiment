@@ -66,8 +66,11 @@
 
     <script>
 
+        const MAX = 3;
         const correct = new Audio('../sound/ding.mp3');
         const wrong = new Audio('../sound/wrong.mp3');
+        const ow = new Audio('../sound/ow.mp3');
+        const gameOver = new Audio('../sound/game-over-one.mp3');
         const HEART = "&#10084;&#65039;";
 
         function getHeart(numb) {
@@ -97,7 +100,7 @@
 
             let nameList = nameText.split(" ");
             nameList.forEach(name => {
-                let health = 5;
+                let health = 3;
                 let div = document.createElement("div");
                 div.className = "health-box";
                 // name
@@ -139,10 +142,17 @@
                 });
 
                 subBtn.addEventListener("click", () => {
+                    if(health <= 0){
+                        return;
+                    }
                     health -= 1;
                     healthText.innerHTML = getHeart(health);
                     wrong.currentTime = 0;
                     wrong.play();
+                    wrong.play();
+                    if(health <= 0){
+                        gameOver.play();
+                    }
                 });
             });
         }
